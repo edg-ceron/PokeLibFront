@@ -1,0 +1,25 @@
+$blue-info: #18202e;
+$blue-sec: #3C6AE4;
+$black-primary: #11141d;
+
+// Update Bulma's global variables
+$success: $blue-sec;
+$info: $blue-info;
+$primary: $black-primary;
+
+.is-full-width {
+  width: 100% !important
+}
+
+.has-text-end {
+  text-align: end !important;
+}
+
+  // Bulma variables
+@import '~bulma/sass/utilities/initial-variables';
+@import '~bulma/sass/utilities/functions';
+// Bulma framework
+@import "~bulma";
+
+@import "./animations.scss";
+
