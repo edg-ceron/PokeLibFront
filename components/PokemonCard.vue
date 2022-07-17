@@ -57,7 +57,8 @@ export default {
       POKEMON_TYPE_COLORS,
       type: "",
       img: "",
-      experience: ""
+      experience: "",
+      fullData: null
     }
   },
   async beforeMount () {
@@ -69,13 +70,14 @@ export default {
     async onGetDetailPokemon () {
       const response = await this.getDetailPokemon({pokemonId: this.pokemonId})
       if (response?.data) {
-        this.type = response.data.types[0].type.name
         this.img = response.data.sprites.other.home.front_default
+        this.type = response.data.types[0].type.name
         this.experience= response.data.base_experience
+        this.fullData = response.data
       }
     },
     redirectDetail () {
-      this.$router.push( { name: 'detail', params: { type: this.type }} )
+      this.$router.push( { name: 'detail', params: { data: this.fullData }} )
     }
   }
 }

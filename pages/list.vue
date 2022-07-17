@@ -1,6 +1,6 @@
 <template>
   <section class="container container-list">
-    <div class="columns is-multiline">
+    <div class="columns is-multiline is-mobile">
       <template v-if="!list.length">
         <template v-for="index in 6" >
         <div
@@ -11,11 +11,12 @@
         </div>
         </template>
       </template>
-      <div class="column is-6-desktop is-12-mobile">Encontrados: <strong>{{count}}</strong></div>
-      <div class="column is-6-desktop is-12-mobile is-flex is-justify-content-flex-end">
+      <div class="column is-6-touch is-6-desktop">Encontrados: <strong>{{count}}</strong></div>
+      <div class="column is-6-touch is-6-desktop is-flex is-justify-content-flex-end">
         <div class="select is-info">
           <select
             @input="onChangeLimit"
+            :value="limit"
             class="is-fullwidth"
           >
             <option :value="6"> 6 </option>
@@ -27,7 +28,7 @@
       <template v-for="(pokemonItem, index) in list">
         <div
           :key="index"
-          class="column is-4-desktop is-12-mobile"
+          class="column is-4-desktop is-6-tablet is-12-mobile"
         >
           <pokemon-card
             :name="pokemonItem.name"
@@ -96,7 +97,7 @@ export default {
           top: document.body.scrollHeight,
           behavior: 'smooth'
         })
-      this.offset = this.offset + this.limit
+      this.offset = this.offset + parseInt(this.limit, 10)
       await this.onGetListPokemon()
       this.loadingData = false
     },

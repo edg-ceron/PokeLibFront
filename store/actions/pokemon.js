@@ -7,7 +7,6 @@ export default {
     return reponse
   },
   async getDetailPokemon({ commit, dispatch, state }, {pokemonId}) {
-    console.log('pokemonId', pokemonId)
     const reponse = await api.getDetailPokemon({pokemonId})
     return reponse
   },

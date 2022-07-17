@@ -14,17 +14,10 @@
 
 export default {
   name: "Layout",
-  beforeMount() {
-    // Promise.all([
-    //   this.validToken()
-    // ])
-  },
   components: {
     Header: () => import('@/components/Header'),
-    // Footer: () => import('@/components/Footer/withoutText'),
   },
   methods: {
-    // ...mapActions(['validToken'])
   }
 }
 </script>

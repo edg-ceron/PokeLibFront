@@ -91,14 +91,14 @@ export default {
 
 .img-main {
   background-image: url(/Mewtwo.webp);
-background-repeat: no-repeat;
- background-attachment: fixed;
- background-position: center center;
- background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center center;
+  background-size: cover;
   height: 95%;
   width: auto;
-   -webkit-animation: bounce-down 3s linear infinite;
-        animation: bounce-down 3s linear infinite;
+  -webkit-animation: bounce-down 3s linear infinite;
+  animation: bounce-down 3s linear infinite;
 
 }
 
