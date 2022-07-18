@@ -14,7 +14,7 @@
       <div class="column is-6-touch is-6-desktop">Encontrados: <strong>{{count}}</strong></div>
       <div class="column is-6-touch is-6-desktop is-flex is-justify-content-flex-end">
         <button class=" button is-link mr-3" @click="toogleModal" >
-          ❔
+          ❕
         </button>
         <div class="select is-info">
           <select
@@ -51,58 +51,10 @@
       </div>
     </div>
 
-    <div class="modal" :class="[this.showModal ?'is-active' : '']">
-      <div class="modal-background"></div>
-      <div class="modal-content">
-        <div class="box is-flex is-flex-direction-column is-justify-content-center">
-          <p class="title has-text-black">Diccionario de Tipos:</p>
-          <table class="table is-striped">
-            <thead>
-              <tr>
-                <th>Categoria</th>
-                <th>Color</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Normal</td>
-                <td :style="{'background-color': POKEMON_TYPE_COLORS.normal}"></td>
-              </tr>
-              <tr>
-                <td>Fighting</td>
-                <td :style="{'background-color': POKEMON_TYPE_COLORS.fighting}"></td>
-              </tr>
-              <tr>
-                <td>Flying</td>
-                <td :style="{'background-color': POKEMON_TYPE_COLORS.flying}"></td>
-              </tr>
-              <tr>
-                <td>Poison</td>
-                <td :style="{'background-color': POKEMON_TYPE_COLORS.poison}"></td>
-              </tr>
-              <tr>
-                <td>Ground</td>
-                <td :style="{'background-color': POKEMON_TYPE_COLORS.ground}"></td>
-              </tr>
-              <tr>
-                <td>Rock</td>
-                <td :style="{'background-color': POKEMON_TYPE_COLORS.rock}"></td>
-              </tr>
-              <tr>
-                <td>Bug</td>
-                <td :style="{'background-color': POKEMON_TYPE_COLORS.bug}"></td>
-              </tr>
-              <tr>
-                <td>Ghost</td>
-                <td :style="{'background-color': POKEMON_TYPE_COLORS.ghost}"></td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <button class="modal-close is-large" aria-label="close" @click="toogleModal"></button>
-    </div>
-
+    <modal-types
+      :show="showModal"
+      :onClose="toogleModal"
+    />
   </section>
 </template>
 
@@ -118,7 +70,8 @@ export default {
   components: {
     PokemonCard: () => import('@/components/PokemonCard.vue'),
     SkeletonCard: () => import('@/components/SkeletonCard.vue'),
-    LoadingPokeball: () => import('@/components/LoadingPokeball.vue')
+    LoadingPokeball: () => import('@/components/LoadingPokeball.vue'),
+    ModalTypes: () => import('@/components/ModalTypes.vue')
   },
   data () {
     return {
