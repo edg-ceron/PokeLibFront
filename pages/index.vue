@@ -30,14 +30,17 @@
                     v-model="password"
                   >
                 </div>
+                <div class="column is-12" v-if="incorrectUser">
+                  <p class="has-text-danger has-text-centered">Usuario y/o contraseña incorrecta</p>
+                </div>
                 <div class="column is-12">
                   <button class="button is-block is-fullwidth is-success" :class="{'is-loading': loadingLoading}" type="susubmitbt">Ingresar</button>
                 </div>
                 <div class="column is-12 has-text-centered">
-                  <router-link class="" :to="{ name: 'recovery-password' }">¿Olvidaste tu contraseña?</router-link>
+                  <router-link class="" :to="{ name: 'proximamente' }">¿Olvidaste tu contraseña?</router-link>
                 </div>
                 <div class="column is-12 has-text-centered">
-                  <router-link to="">Registrarse</router-link>
+                  <router-link to="proximamente">Registrarse</router-link>
                 </div>
             </form>
         </div>
@@ -55,22 +58,41 @@ export default {
     return {
       loadingLoading: false,
       user: "",
-      password: ""
+      password: "",
+      incorrectUser: false
     }
   },
-
+  beforeMount () {
+    if (localStorage.getItem("token")) this.$router.push({name: "list"})
+  },
   methods: {
     ...mapActions(['login']),
     async onLogin () {
-      console.log("user", this.user)
-      console.log("passw", this.password)
       this.loadingLoading = true
       const data = {
         user: this.user,
         password: this.password
       }
       let response = await this.login(data)
+      console.log(response)
+      if (response?.status) {
+        this.loadingLoading = false
+        return this.incorrectUser = true
+      }
+      localStorage.setItem("token", response.data.token)
       this.$router.push({name: "list"})
+    }
+  },
+  watch: {
+    user(newValue, oldValue) {
+      if (this.incorrectUser && newValue !== oldValue) {
+        this.incorrectUser = false
+      }
+    },
+    password(newValue, oldValue) {
+      if (this.incorrectUser && newValue !== oldValue) {
+        this.incorrectUser = false
+      }
     }
   }
 }

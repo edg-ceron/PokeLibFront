@@ -14,6 +14,7 @@
 
 export default {
   name: "Layout",
+  middleware: 'validate-code',
   components: {
     Header: () => import('@/components/Header'),
   },

@@ -1,9 +1,9 @@
+import api from '@/lib/api'
+
 export default {
-  login ({ commit, dispatch, state }, {user, password}) {
-    try {
-      console.log("Login", user, password)
-    } catch (error) {
-      // console.log('error', error)
-    }
+  async login ({ commit, dispatch, state }, {user, password}) {
+      const data = {user, password}
+      const response = await api.login(data)
+      return response
   },
 }
