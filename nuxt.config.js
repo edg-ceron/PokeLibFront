@@ -39,6 +39,7 @@ export default {
   buildModules: [
     "@nuxtjs/style-resources",
     "@nuxtjs/fontawesome",
+    "@nuxtjs/dotenv"
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
