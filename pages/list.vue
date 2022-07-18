@@ -1,16 +1,9 @@
 <template>
   <section class="container container-list">
     <div class="columns is-multiline is-mobile">
-      <template v-if="!list.length">
-        <template v-for="index in 6" >
-        <div
-            :key="index"
-            class="column is-4-desktop is-12-mobile"
-          >
-            <skeleton-card />
-        </div>
-        </template>
-      </template>
+      <div class="column is-12">
+        <h1 class="title is-size-3">Listado de pokemones</h1>
+      </div>
       <div class="column is-6-touch is-6-desktop">Encontrados: <strong>{{count}}</strong></div>
       <div class="column is-6-touch is-6-desktop is-flex is-justify-content-flex-end">
         <button class=" button is-link mr-3" @click="toogleModal" >
@@ -28,6 +21,16 @@
           </select>
         </div>
       </div>
+      <template v-if="!list.length">
+        <template v-for="index in 6" >
+        <div
+            :key="index"
+            class="column is-4-desktop is-12-mobile"
+          >
+            <skeleton-card />
+        </div>
+        </template>
+      </template>
       <template v-for="(pokemonItem, index) in list">
         <div
           :key="index"
@@ -92,14 +95,7 @@ export default {
     ...mapActions(['getListPokemon']),
     async onGetListPokemon () {
       const response = await this.getListPokemon({limit: this.limit, offset: this.offset})
-        console.log('response', response )
       if (response?.data) {
-
-        // const format = response.data.results.map( item => {
-        //   const splitUrl = item.url.split("/")
-        //   return {name: item.name, id: parseInt(splitUrl[splitUrl.length - 2], 10) }
-        // } )
-        // this.list.push(...format)
         this.list.push(...response.data.results)
         this.count = response.data.count
 
@@ -116,7 +112,6 @@ export default {
       this.loadingData = false
     },
     async onChangeLimit ({target}) {
-      console.log('e', target.value)
       this.list = []
       this.limit = target.value
       this.offset = 0

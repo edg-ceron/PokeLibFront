@@ -74,7 +74,6 @@ export default {
         password: this.password
       }
       let response = await this.login(data)
-      console.log(response)
       if (response?.status) {
         this.loadingLoading = false
         return this.incorrectUser = true

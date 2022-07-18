@@ -29,10 +29,6 @@ export default {
       required: true
     }
   },
-  async beforeMount () {
-    console.log('stats', this.stats)
-
-  },
 }
 </script>
 
