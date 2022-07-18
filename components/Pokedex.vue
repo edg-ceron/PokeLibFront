@@ -39,10 +39,10 @@
           </div>
         </div>
         <div class="column is-12-touch is-6-desktop pl-0 pb-0 is-flex is-flex-direction-column is-justify-content-end pokedex-stats">
-          <div style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-8.74,6.43 C184.82,-10.35 154.91,87.34 502.54,68.59 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #f14668;"></path></svg></div>
+          <div class="is-hidden-touch" style="height: 150px; overflow: hidden;" ><svg viewBox="0 0 500 150" preserveAspectRatio="none" style="height: 100%; width: 100%;"><path d="M-8.74,6.43 C184.82,-10.35 154.91,87.34 502.54,68.59 L500.00,150.00 L0.00,150.00 Z" style="stroke: none; fill: #f14668;"></path></svg></div>
           <div class="section-stats has-background-danger p-5">
             <div class="subtitle is-size">Bienvenido a la libreria de tu pokemon preferido. En esta parte podrás encontrar los detalles de tu pokemon preferido</div>
-            <div class="columns is-multiline p-3">
+            <div class="columns is-multiline p-3 is-hidden-touch">
               <template v-for="index in 8">
                 <div class="column is-3 has-background-link pokedek-ani-block" :key="index"></div>
               </template>
@@ -154,5 +154,21 @@ export default {
   height: 100px;
   width: 100px;
   clip-path: polygon(10% 25%, 35% 25%, 35% 0%, 65% 0%, 65% 25%, 90% 25%, 90% 50%, 65% 50%, 65% 86%, 34% 86%, 35% 50%, 10% 50%);
+}
+
+@media screen and (max-width: 1024px) {
+
+  .section-stats {
+    height: auto;
+  }
+}
+@media screen and (max-width: 768px) {
+  .pokedex-main {
+    border-radius: 30px 30px 0px 0px;
+    border-right: 0px;
+  }
+  .pokedex-stats {
+    padding: 0 !important;
+  }
 }
 </style>

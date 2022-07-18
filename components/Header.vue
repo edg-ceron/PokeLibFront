@@ -7,7 +7,7 @@
             <img src="/pokeball.png" alt="Logo">
             PokeLib
           </router-link>
-          <span class="navbar-burger" data-target="navbarMenuHeroB">
+          <span class="navbar-burger burger" @click="menu" data-target="navbarMenuHeroB">
             <span></span>
             <span></span>
             <span></span>
@@ -22,9 +22,6 @@
             </a>
             <span class="navbar-item">
               <a class="button is-info is-inverted" href="https://www.linkedin.com/in/e-ceron/" target="_blank">
-                <span class="icon">
-                  <i class="fab fa-github"></i>
-                </span>
                 <span>Linkedin</span>
               </a>
             </span>
@@ -38,6 +35,16 @@
 <script>
 
 export default {
+  name: "Header",
+  methods: {
+    menu () {
+      let burger = document.querySelector('.burger')
+      let nav = document.querySelector('#'+burger.dataset.target)
+      burger.classList.toggle('is-active')
+      nav.classList.toggle('is-active')
+    },
+
+  }
 }
 </script>
 

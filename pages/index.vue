@@ -10,6 +10,10 @@
               @submit.prevent="onLogin"
               class="columns is-multiline is-full-width"
             >
+              <div class="column is-12 login-icon mt-6-mobile is-flex is-justify-content-center">
+                <img src="/pokeball.png" alt="Logo">
+                <p class="title">PokeLib</p>
+              </div>
               <h1 class="subtitle column is-12 has-text-centered has-text-white is-size-3">Inicio de sesion</h1>
               <div class="column is-12 field">
                 <input class="input"
@@ -108,6 +112,7 @@ export default {
   /* background: #232C3F; */
   background-image: linear-gradient(108.6deg, rgb(76, 40, 54) -11%, rgb(17, 20, 29) 19%, rgb(35,44,63) 91.7%);
   border-radius: 40px;
+  width: 100%;
 }
 
 .img-main {
@@ -127,12 +132,20 @@ export default {
   border-left: 1px solid #f5f5f51f;
 }
 
-  @media screen and (max-width: 768px) {
-    .container-form{
-      border-left: 0px;
-      display: flex;
-      align-items: center;
-    }
+.login-icon {
+  justify-content: c;
+}
+
+.login-icon img{
+  height: 50px;
+}
+
+@media screen and (max-width: 768px) {
+  .container-form{
+    border-left: 0px;
+    display: flex;
+    align-items: center;
   }
+}
 </style>
 
